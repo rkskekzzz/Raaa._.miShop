@@ -1,0 +1,245 @@
+
+@font-face{
+	font-family: nanumL;
+	src:url('fonts/nanumSquareL.ttf');
+}
+@font-face{
+	font-family: nanumB;
+	src:url('fonts/nanumSquareB.ttf');
+}
+@font-face{
+	font-family: nanumEB;
+	src:url('fonts/nanumSquareEB.ttf');
+}
+
+*{
+	font-family: nanumB;
+	color: #fbbc7e;
+	font-size: 1.3rem;
+}
+body{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
+
+.container{
+	max-width: 1024px;
+	margin: 50px 50px 0 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+header{
+	height: 30%;
+
+}
+
+main{
+
+}
+footer{
+	margin-bottom: 50px;
+}
+
+.delivery{
+	padding: 0 30px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items:  center;
+}
+select { 
+	width: 330px; /* 원하는 너비설정 */ 
+	height: 70px;
+	font-size: 1.7rem;
+	font-family: inherit; /* 폰트 상속 */ 
+	background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 
+	border: 1px solid #999; 
+	border-radius: 0px; /* iOS 둥근모서리 제거 */ 
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+	-moz-appearance: none; appearance: none; 
+	border-color: #fbbc7e;
+	text-align: center;
+}
+/*----------------------modal----------------------*/
+.modal{
+	z-index: 1;
+	font-size: 3rem;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.hide{
+	display: none;
+
+}
+.modal__overlay{
+	background-color: #000000c4;
+	position: absolute;
+	width: 100%;
+ 	height: 100%;
+}
+.modal__content{
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 50px;
+	width: 50%;
+	border-radius: 25px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	position: relative;
+	top: 0;
+	width: 60%;
+
+}
+.bill_head{
+	background-image: url(images/billTop.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 200px;
+}
+.bill_body{
+	width: 100%;
+}
+.bill_box{
+	width: 588px;
+	display: flex;
+	justify-content: space-between;
+	margin: 10px 0px;
+}
+.bill_body *{
+	color: black;
+	font-size: 1.2rem;
+}
+#bill_product{
+	padding-left: 15px;
+	width: 50%;
+	text-align: left;
+}
+#bill_count {
+	width: 25%;
+	text-align: left;
+}
+#bill_cost {
+	padding-right: 30px;
+	width: 25%;
+	text-align: right;
+}
+.bill_bottom{
+	background-image: url(images/billBottom.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 250px;
+	display: flex;
+	justify-content: space-between;
+	padding: 85px 10px 0 10px;
+}
+.bill_bottom span{
+	top: 40px;
+	color: black;
+	font-family: nanumEB;
+}
+/*----------------------modal----------------------*/
+.header_image{
+	width: 100%;
+	height: 400px;
+	background: url(images/header_image.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.product{
+	display: flex;
+	padding:20px 30px 40px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #fbbc7e;
+}
+.product_image{
+
+}
+.product_image img{
+	width: 240px;
+	height: 240px;
+	box-shadow: 2px 2px 30px lightgray;
+}
+.product_info{
+	width: 500px;
+	padding: 20px 0;
+	margin: 0 0 0 50px;
+	display: flex;
+	flex-direction: column;	
+	justify-content: space-between;
+}
+.product_info_name{
+	margin: 0;
+	font-size: 2rem;
+}
+.product_info_cost{
+	padding-left: 20px;
+	display: flex;
+}
+.product_info_cost img{
+	width: 50px;
+	height: 50px;
+}
+
+.cost_input{
+	width: 100px;
+	margin:0 24px;
+	text-align: center;
+	border-width: 0;
+	font-family: nanumEB;
+	font-size: 2rem;
+}
+.product_info_cost_box{
+	display: flex;
+	width: 100%;
+	margin-left: 50px;
+	align-items: center;
+
+}
+.cost{
+	width: 170px;
+	padding-right: 20px;
+	text-align: right;
+	font-size: 1.9rem;
+	color: #ff9580;
+	border-width: 0px;
+}
+.won{
+	vertical-align: bottom;
+}
+.hidden{
+	display: none;
+}
+.confirm{
+	width: 100%;
+
+	position: static;
+}
+.delivery img{
+	height: 50px;
+}
+.confirm button{
+	position: relative;
+	width: 300px;
+	height: 100px;
+	background: url(images/button.jpg);
+	left: 50%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateX(-50%);
+
+}

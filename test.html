@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1 class="test">1</h1>
+	<h1 class="test">2</h1>
+	<h1 class="test">3</h1>
+	<h1 class="test">4</h1>
+	<h1 class="test">5</h1>
+
+	<script type="text/javascript">
+		var arr = ['123','43','a','b','c'];
+
+		(function(){
+			$('.test').each(function(index){
+				console.log(arr[index]);
+				$(this).text(arr[index]);
+			});
+		}());
+
+	</script>
+</body>
+</html>

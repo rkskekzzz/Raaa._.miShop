@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="modal hidden">
+		<div class="modal__overlay"></div>
+		<div class="modal__content">
+			<p>총 주문 금액은</p>		
+			<p id="modal_sum"></p>
+		
+		</div>
+	</div>
+	<div class="container">
+		<header>
+			<h1>Raaa._.mi 문구 계산기</h1><br>
+			<p>수량을 작성한 후 가격확인 버튼을 눌러주세요.</p>
+		</header>
+		<main>
+			<div class="delivery">
+				<span class="delivery_fee">
+					배송 지역은 
+				</span>	
+				<form>
+					<select class="location" name="loca" id="id_location" onchange="deliveryFee(this.value)" >
+						<option value="none">선택</option>
+						<option value="1">일반</option>
+						<option value="2">제주도</option>
+					</select>
+				</form>		
+				<span class="delivery_fee">
+					이고 배송비는&nbsp
+				</span>		
+				<span class="delivery_fee coast">
+					0
+				</span>
+				<span class="delivery_fee">
+					원 입니다.
+				</span>
+			</div>
+
+			<!-------------------------제품 칸----------------------------->
+			<div class="product p1">
+				<div class="imgbox">
+					<img src="images/image1.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>빵만드는 다다</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p2">
+				<div class="imgbox">
+					<img src="images/image2.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>다다는 복숭아</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p3">
+				<div class="imgbox">
+					<img src="images/image3.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>알파벳, 숫자 스티커</h1>
+					<p>구매하시는 모든 알파벳, 숫자 스티커세트의 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p4">
+				<div class="imgbox">
+					<img src="images/image4.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>페이퍼컷팅 시리즈 낱개</h1>
+					<p>낱개 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p5">
+				<div class="imgbox">
+					<img src="images/image5.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>페이퍼컷팅 시리즈 세트</h1>
+					<p>세트 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p6">
+				<div class="imgbox">
+					<img src="images/image6.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>두두다다세컷 스티커 낱개</h1>
+					<p>낱개 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p7">
+				<div class="imgbox">
+					<img src="images/image7.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>두두다다세컷 스티커 세트</h1>
+					<p>세트 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p8">
+				<div class="imgbox">
+					<img src="images/image8.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>두두다다 스티커 꾸미기</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p9">
+				<div class="imgbox">
+					<img src="images/image9.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>벚꽃 다다</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p10">
+				<div class="imgbox">
+					<img src="images/image10.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>종이접기 컨페티 낱개</h1>
+					<p>낱개 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p11">
+				<div class="imgbox">
+					<img src="images/image11.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>종이접기 컨페티 세트</h1>
+					<p>세트 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p12">
+				<div class="imgbox">
+					<img src="images/image12.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>홀로그램 컨페티</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p13">
+				<div class="imgbox">
+					<img src="images/image13.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>다다 미니 숫자스티커</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p14">
+				<div class="imgbox">
+					<img src="images/image14.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>한글스티커 원색 낱개</h1>
+					<p>낱개 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p15">
+				<div class="imgbox">
+					<img src="images/image15.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>한글스티커 원색 세트</h1>
+					<p>세트 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p16">
+				<div class="imgbox">
+					<img src="images/image16.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>한글스티커 파스텔 낱개</h1>
+					<p>낱개 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p17">
+				<div class="imgbox">
+					<img src="images/image17.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>한글스티커 파스텔 세트</h1>
+					<p>세트 구매 수량을 적어주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p18">
+				<div class="imgbox">
+					<img src="images/image18.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>한글스티커 솜사탕</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p19">
+				<div class="imgbox">
+					<img src="images/image19.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>미니 달력</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p20">
+				<div class="imgbox">
+					<img src="images/image20.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>다다 그립톡</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+			<div class="product p21">
+				<div class="imgbox">
+					<img src="images/image21.jpeg" alt="breaddada">	
+				</div>
+				<div class="product_name">
+					<h1>다다 폰케이스</h1>
+					<p>수량을 입력해주세요.</p>
+				</div>
+				<form class="product_count product_count_1">
+					<input type="number" pattern="\d*" placeholder="" name="pd" class="product_input" />
+				</form>
+			</div>
+
+			<!-------------------------제품 칸----------------------------->
+
+
+			<div class="footer">
+				<address>
+					
+				</address>		
+			</div>
+			<div class="confirm">
+				<button id="open">
+					가격 확인
+				</button>
+			</div>
+		</main>
+
+	</div>
+	<script type="text/javascript">
+		const openButton = document.getElementById("open");
+		const modal = document.querySelector(".modal");
+		const coast = document.querySelector(".coast");
+		const total = document.getElementById("modal_sum");
+		var sum = 0;
+		var idx = 0;
+		var delifee = 0;
+		var coastArr = [2500,2500,4500,2200,13000,1200,4000,2000,1800,2200,11000,2200,2500,4300,15200,4300,15200,4300,3000,9900,16000];
+		var deliArr = [0,3000,3500];
+		const openModal = () =>{
+			modal.classList.remove("hidden");
+		}
+		const closeModal = () =>{
+			modal.classList.add("hidden");
+		}
+		const deliveryFee = (str) =>{
+			var i;
+			for(i=0; i<10;i++){
+				if(str==i.toString()){
+					coast.textContent = numberFormat(deliArr[i]);
+					delifee = deliArr[i];
+				}
+			}
+		}
+		modal.addEventListener("click",closeModal);
+		openButton.addEventListener("click",openModal);
+
+		$("#open").click(function(){
+			$(".product_input").each(function(){
+				var temp = $(this).val();
+				sum = sum + Number(temp)*coastArr[idx];
+				idx++;
+
+			});
+			if(sum<100000){
+				sum = sum + delifee;
+			}
+			total.textContent=numberFormat(sum) + "원";
+			sum = 0;
+			idx = 0;
+		});
+
+
+		function numberFormat(inputNumber) {
+   			return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
+		
+	
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title display="none">raaa._.mi shop</title>
+	<link rel="stylesheet" type="text/css" href="style1.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header_image">
+				
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="modal hide">
+			<div class="modal__overlay"></div>
+			<div class="modal__content">
+				<div class="bill_head"></div>
+				<div class="bill_body">
+					<div class="bill_box">
+						<div id="bill_product">주문내역없음</div>
+						<div id="bill_count">0</div>
+						<div id="bill_cost">0</div>	
+					</div>
+				</div>
+				<div class="bill_bottom">
+					<span>총금액</span>
+					<span id="bill_sum">0</span>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="container"  id="cp">
+			<!-------------------------제품목록------------------------------>
+
+			<div class="product">
+				<div class="product_image">
+					<img class="image" src="images/image1.jpeg" alt="">
+				</div>
+				<div class="product_info">
+					<h1 class="product_info_name"></h1>
+					<input type="number"  value="" class="hidden"/>
+					<div class="product_info_cost">
+						<img src="images/minus.png" alt="" class="minus">
+						<input type="number"  value="0" pattern="\d*" placeholder="" name="pd" class="cost_input"/>
+						<img src="images/plus.png" alt="" class="plus">
+						<div class="product_info_cost_box">
+							<input type="text" class="cost" value="0">
+							<div class="won">
+								원
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+
+			<!-------------------------제품목록------------------------------>
+			
+		</div>			
+	</main>
+	<footer>
+		<div class="container">
+			<div class="delivery">
+				<img src="images/footer_left.png" alt="" class="footer_left">
+				<form>
+					<select class="location" name="loca" id="id_location" onchange="deliveryFee(this.value)" >
+						<option value="0"> &nbsp일반(택배)</option>
+						<option value="1"> &nbsp제주도(일반)</option>
+						<option value="2"> &nbsp우편배송</option>
+						<option value="3"> &nbsp준등기</option>
+					</select>
+				</form>
+				<img src="images/footer_right.png" alt="" class="footer_right">
+			</div>
+			<div class="confirm">
+				<button id="open">
+				</button>
+			</div>
+		</div>
+
+	</footer>
+	<script type="text/javascript">
+		const modal = document.querySelector('.modal');
+		const openButton = document.getElementById('open');
+		const pruductArr = ['빵만드는 다다','다다는 복숭아','미니숫자 스티커','필기체 알파벳 스티커 1세트','숫자스티커 1세트','뚱땡이 필기체 알파벳 스티커','뚱땡이 필기체 알파벳 스티커 세트','한글 스티커 원색 1세트','한글 스티커 원색 1묶음','한글스티커 파스텔 1세트','한글 스티커 파스텔 1묶음','한글 스티커 솜사탕 버전 1세트','페이퍼컷팅 시리즈 1개당','페이퍼컷팅 시리즈 1세트','두두다다 스티커 꾸미기 1개 ','벚꽃 다다','종이접기 컨페티 스티커 1개','종이접기 컨페티 스티커 1세트','홀로그램 컨페티 스티커 1개','두두다다 세컷 스티커 1개','두두다다 세컷 스티커 1세트','두두다다 미니달력','다다 그립톡 ','다다 폰케이스'];
+		const costArr = [2500,2500,2500,4500,4500,2300,11000,4500,16000,4500,16000,4500,2200,17600,2000,1800,2200,11000,2200,1200,4000,3000,9900,16000,];
+		var payArr = [0,0]
+		var billsum = 0;
+		var deliveryfee = 2900;
+		const deliveryFee = (str) =>{
+			if(parseInt(str)==1)
+				deliveryfee = 3500;
+			else if(parseInt(str)==2)
+				deliveryfee = 700;
+			else if(parseInt(str)==3)
+				deliveryfee = 1500;
+			console.log(deliveryfee);
+		}
+		const sumVal = (price, num) =>{
+			var sumval = price * num;
+			return numberFormat(sumval);
+		}
+		const openModal = () =>{
+			modal.classList.remove("hide");
+		}
+		const closeModal = () =>{
+			modal.classList.add("hide");
+			var $bill_clo = $('div.bill_box:first').clone();
+			$('.bill_body').empty();
+			$bill_clo.appendTo('.bill_body');
+
+		}
+		openButton.addEventListener("click",openModal);
+		modal.addEventListener("click",closeModal);
+		//제품 박스 만들기
+		(function(){
+			for(var k= 0 ; k < 23; k++){
+				var $clo = $('div.product:first').clone();
+				$clo.appendTo('#cp');
+			}
+		}());
+		//제품가격 초기화
+		(function(){
+			$('.hidden').each(function(index){
+				$(this).val(costArr[index]);
+				//console.log("값 box idx : ", index," 가격 : ",costArr[index]);
+			});
+		}());
+		//제품이름 초기화
+		(function(){
+			$('.product_info_name').each(function(index){
+				$(this).text(pruductArr[index]);
+				//console.log("값 box idx : ", index," 가격 : ",costArr[index]);
+			});
+		}());
+		//제품이미지초기화
+		(function(){
+			$('.image').each(function(index){
+				var img_src;
+				img_src = 'images/image' + (index) + '.jpeg';
+				$(this).attr("src",img_src);
+				
+			});
+		}());
+		//인풋박스 직접수정
+		$(document).ready(function(){
+			$('.cost_input').change(function(){
+				var temp = $(this).val();
+				var idx = $(this).parent().parent().children('input.hidden').val();
+				var $sum = $(this).parent().children('div.product_info_cost_box').children('input.cost');
+				//console.log(temp,idx);
+				$sum.val(sumVal(idx,temp));
+			});
+		});
+
+		//마이너스 버튼 클릭
+		$(document).ready(function(){
+			$('.minus').click(function(){
+				var $count = $(this).parent().children('input.cost_input');
+				var count_val = parseInt($count.val());
+				if(count_val<1)
+					return;
+				var $sum = $(this).parent().children('div.product_info_cost_box').children('input.cost');
+				var idx = $(this).parent().parent().children('input.hidden').val();
+				$count.val(count_val-1);
+				$sum.val(sumVal(idx,$count.val()));
+			});
+		});
+		//플러스 버튼 클릭
+		$(document).ready(function(){
+			$('.plus').click(function(){
+				var $count = $(this).parent().children('input.cost_input');
+				var count_val = parseInt($count.val());
+				var $sum = $(this).parent().children('div.product_info_cost_box').children('input.cost');
+				var idx = $(this).parent().parent().children('input.hidden').val();
+				$count.val(count_val+1);
+				$sum.val(sumVal(idx,$count.val()));
+			});
+		});
+		//숫자 세자리 콤마 정규표현식
+		function numberFormat(inputNumber) {
+   			return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
+   		//총 합계 계산하기
+   		
+		$("#open").click(function(){
+			var i = 0;
+			var sum = 0;
+			var k=0;
+			var overct = 0;
+			$(".cost_input").each(function(){
+				var temp = $(this).val();
+				sum = sum + Number(temp)*costArr[i];
+				i++;
+			});
+			if (sum<70000) {
+				sum = sum + deliveryfee;
+			}
+			$("#bill_sum").text(numberFormat(sum));
+			$(".cost_input").each(function(index){
+				if($(this).val()>0){
+					var count = parseInt($(this).val());
+					var cost = costArr[index] * count;
+					if(overct==0){
+						$('#bill_product').text(pruductArr[index]);
+						$('#bill_count').text(count);
+						$('#bill_cost').text(numberFormat(cost));
+						overct++;
+					}
+					else{
+						var $bill_clo = $('div.bill_box:first').clone();
+						$bill_clo.children().first().text(pruductArr[index]);
+						$bill_clo.children().eq(1).text(count);
+						$bill_clo.children().eq(2).text(numberFormat(cost));
+						$bill_clo.appendTo('.bill_body');
+					}
+					
+				}
+				
+			});
+			overct=0;
+		});
+
+	</script>
+
+</body>
+</html>
